@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns       = "http://www.w3.org/ns/widgets"
+    xmlns:gap       = "http://phonegap.com/ns/1.0"
+    xmlns:android   = "http://schemas.android.com/apk/res/android"
+    id              = "com.recetas.app"
+    version         = "1.0.0">
+<name>Recetas 2015 App</name>
+<description>Aplicacion de Receta</description>
+
+<access origin="*" subdomains="false"  />
+<gap:platform name="android" />
+<feature name="http://api.phonegap.com/1.0/network"/>
+<feature name="http://api.phonegap.com/1.0/device"/>
+<gap:plugin name="cordova-plugin-whitelist" source="npm" />
+<gap:plugin name="org.apache.cordova.device" />
+
+</widget>

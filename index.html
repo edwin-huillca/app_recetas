@@ -1,0 +1,2239 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script>
+	    $(document).bind('mobileinit',function(){
+	        $.mobile.changePage.defaults.changeHash = false;
+	        $.mobile.hashListeningEnabled = false;
+	        $.mobile.pushStateEnabled = false;
+
+	    });
+	</script> 
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <script type="text/javascript">
+  		
+		$( document ).ready(function() {
+		    $(".left-table").click(function () {
+		      $(this).toggleClass("active");
+		    });
+		});
+    </script>
+</head>
+<body>
+    
+    <style type="text/css">
+    
+        @font-face {
+          font-family: 'FordAntenna-Regular';
+          src: url('fonts/FordAntenna-Regular.eot?#iefix') format('embedded-opentype'),  
+          url('fonts/FordAntenna-Regular.otf')  format('opentype'),
+    	     url('fonts/FordAntenna-Regular.woff') format('woff'), 
+    	     url('fonts/FordAntenna-Regular.ttf')  format('truetype'), 
+    	     url('fonts/FordAntenna-Regular.svg#FordAntenna-Regular') format('svg');
+          font-weight: normal;
+          font-style: normal;
+        }
+        @font-face {
+            font-family: 'ZonaPro-Thin';
+            src: url('fonts/ZonaPro-Thin.eot?#iefix') format('embedded-opentype'),  
+            url('fonts/ZonaPro-Thin.otf')  format('opentype'),
+            url('fonts/ZonaPro-Thin.woff') format('woff'), 
+            url('fonts/ZonaPro-Thin.ttf')  format('truetype'), 
+            url('fonts/ZonaPro-Thin.svg#ZonaPro-Thin') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        html,body{
+            padding: 0;
+            margin: 0;
+            font-family: 'ZonaPro-Thin';
+        }
+        .reset-list{
+	        list-style: none;
+	        padding: 0;
+	        margin: 0;
+        }
+        .header-in{
+            height: 130px;
+            background: url("images/header.png");
+            text-align: center;
+            border: 0;
+            position: relative;
+            z-index: 100;
+        }
+        .header-in .logo{
+            margin: 50px auto 0 auto;
+        }
+        .header-in h1{
+            position: absolute;
+            top: 10px;
+            width: 100%;
+            text-align: center;
+            margin: 0!important;
+            font-size: 17px!important;
+        }
+        .header-in a{
+            position: absolute;
+            top: 28px;
+            left: 24px;
+            opacity: 1;
+            z-index: 101;
+            border: 0;
+            background: transparent!important;
+        }
+        .separator{
+            position: relative;
+            min-height: 220px;
+        }
+        .separator a#cenas{
+            background: url("images/cenas.png") center;
+            background-size:cover;
+        }
+        .separator a#bebidas{
+            background: url("images/guarnicion.jpg") center;
+            background-size:cover;
+        }
+        .separator a#postres{
+            background: url("images/postres.jpg") center;
+            background-size:cover;
+        }
+        .separator a span{
+            font-family: Arial;
+            bottom: -5px;
+            position: absolute;
+            display: block;
+            color: #fff;
+            background: #508dba;
+            -webkit-border-top-left-radius: 10px;
+            -webkit-border-top-right-radius: 10px;
+            -moz-border-radius-topleft: 10px;
+            -moz-border-radius-topright: 10px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            text-shadow: 0 0 0 transparent;
+            padding: 10px 60px;
+            font-size: 20px;
+        }
+        .bottom-label{
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            position: absolute;
+            width:100%;
+            height: 100%;
+        }
+        .ui-content{
+            padding: 0;
+        }
+        .title-list{
+            font-family: Arial;
+            -webkit-border-top-left-radius: 5px;
+            -webkit-border-bottom-left-radius: 5px;
+            -moz-border-radius-topleft: 5px;
+            -moz-border-radius-bottomleft: 5px;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            background: #508dba;
+            padding: 10px 2px;
+            font-size: 22px;
+            float: right;
+            margin: 20px 0 0 0;
+            color: #fff;
+            text-shadow: 0 0 0 transparent;
+            width: 90%;
+            padding: 1% 5%;
+        }
+        .paragraph-list{
+            font-family: 'FordAntenna-Regular';
+            color: #575859;
+            font-size: 14px;
+            width: 82%;
+            text-shadow: 0 0 0 transparent;
+            float: left;
+            margin: 15px 0 0 0;
+            padding: 1% 15% 1% 2%;
+            background: url("images/go.png") right center no-repeat;
+        }
+        .right-col{
+            float: right;
+            width: 50%;
+            position: relative;
+        }
+        .select{
+            float: left;
+            width: 100%;
+            border-bottom: 5px solid #508dba;
+            padding: 10px 0;
+            position: relative;
+        }
+        .select a{
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 102;
+            top: 0;
+            left: 0;
+        }
+        .select-thumb{
+            float: left;
+            max-width: 45%;
+        }
+        #tabs .list-tabs a{
+            border: 0;
+            font-size: 14px;
+        }
+        #tabs .list-tabs{
+            border-bottom: 5px solid #508dba;
+            border-radius: 0;
+        }
+        .category{
+            font-size: 12px;
+            margin: 20px 50px;
+        }
+        .category span{
+            color: #508dba;
+        }
+        .image-container{
+            width: 375px;
+            margin: 0 auto;
+            border-bottom: 5px solid #508dba;
+            line-height: 0;
+        }
+        .steps div{
+		    max-width: 550px;
+		    margin: 0 auto;
+        }
+        .list-steps{
+            max-width:550px;
+            margin: 0 auto;
+        }
+        .list-steps li{
+            margin: 20px 0;
+            color: #151515;
+            font-size: 14px;
+            position: relative;
+            padding: 0 0 0 40px;
+        }
+        .list-steps span{
+            background: #508dba;
+            padding: 5px;
+            -webkit-border-top-right-radius: 5px;
+            -webkit-border-bottom-left-radius: 5px;
+            -moz-border-radius-topright: 5px;
+            -moz-border-radius-bottomleft: 5px;
+            border-top-right-radius: 5px;
+            border-bottom-left-radius: 5px;
+            text-shadow: 0 0 0 transform;
+            color: #fff;
+            margin: 0 5px 5px 5px;
+            display: block;
+            position: absolute;
+            left: 5px;
+            top: 2px;
+        }
+        
+        .top-table{
+            float: left;
+            width: 100%;
+    		border-bottom: 1px solid #999;
+    		margin: 15px 0 0 0;
+    		position: relative;
+        }
+        .body-table{
+            float: left;
+            width: 100%;
+        }
+        .left-table{
+            float: left;
+            padding: 15px 0 15px 80px;
+            background: url("images/uncheck.png") 35px center no-repeat;
+        }
+        .left-table.active{
+            float: left;
+            padding: 15px 0 15px 80px;
+            background: url("images/check.png") 35px center no-repeat;
+        }
+        .right-table{
+            float: right;
+            width: 190px;
+            max-width: 50%;
+        }
+    	.many{
+            float: left;
+    		width:49%;
+    		text-align: center;
+    		padding: 15px 0;
+    	}
+    	.measures{
+            float: left;
+    		width:50%;
+    		text-align: center;
+    		padding: 15px 0;
+    	}
+    	.measure-line{
+            position: absolute;
+            width: 96px;
+            max-width: 24%;
+            border-left: 1px solid #999;
+            min-height: 100%;
+            right: 0;
+        }
+    	.container-ingredientes{
+    	}
+    	.ingredients-list li{
+    	    width: 100%;
+    	    float: left;
+    	    border-bottom: 1px solid #999;
+    	    position: relative;
+    	}
+    	#preparacion{
+    	    -webkit-border-top-right-radius: 10px;
+            -moz-border-radius-topright: 10px;
+            border-top-right-radius: 10px;
+    	}
+    	#ingredientes{
+    	    -webkit-border-top-left-radius: 10px;
+            -moz-border-radius-topleft: 10px;
+            border-top-left-radius: 10px;
+    	}
+        @media (min-width:500px){
+            .bottom-label{
+                border-bottom: 5px solid #508dba;
+                margin: -135px 0;
+            }
+            .ui-content{
+                border-width: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                position: absolute;
+                top: 0;
+            }
+            .ui-content{
+                border-width: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                position: absolute;
+                top: 0;
+                margin: 130px 0 -130px 0 ;
+            }
+            .separator{
+                width: 33.3%;
+                height: 100%;
+                float: left;
+            }
+            .separator a{
+                width: 100%;
+                height: 100%;
+                display: block;
+            }
+	    	#cat-platoprincipal .ui-content{
+			    position: relative;
+			    margin: 0;
+	        }
+	    	#cat-guarnicion .ui-content{
+			    position: relative;
+			    margin: 0
+	        }
+	    	#cat-postre .ui-content{
+			    position: relative;
+			    margin: 0
+	        }
+        }
+        @media (min-width:650px){
+            .right-col{
+                width: 60%;
+            }
+        }
+        @media (min-width:900px){
+            .right-col{
+                width: 70%;
+            }
+        }
+        @media (max-width:499px){
+            .left-table{
+                max-width: 23%;
+            }
+            .separator{
+                border-bottom: 5px solid #508dba;
+            }
+            .separator a{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+            
+            .separator a#cenas span{
+                right: -5px;
+            }
+            .separator a#bebidas span{
+                left: -5px;
+            }
+            .separator a#postres span{
+                right: -5px;
+            }
+        }
+        
+    </style>
+    
+    
+    <!-- Recetas -->
+    <div data-role="page" id="recetas">
+        <div data-role="header" class="header-in">
+            <h1>¿Qué te provoca hoy?</h1>
+            <img class="logo" src="images/logo.png"/>
+        </div>
+        <!-- -->
+        <div data-role="main" class="ui-content">
+            <div class="separator">
+                <div class="bottom-label">
+                    <a href="#cat-platoprincipal" data-transition="slide" id="cenas">
+                        <span>
+                            Plato principal
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <div class="separator">
+                <div class="bottom-label">
+                    <a href="#cat-guarnicion" data-transition="slide" id="bebidas">
+                        <span>
+                            Guarniciones
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <div class="separator">
+                <div class="bottom-label">
+                    <a href="#cat-postre" data-transition="slide" id="postres">
+                        <span>
+                            Postres y Bebidas
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+    </div> 
+    
+    
+    <!-- Categorias -->
+    <div data-role="page" id="cat-platoprincipal">
+        <div data-role="header" class="header-in">
+            <h1>Platos principales</h1>
+            <a href="#recetas" class="ui-btn btn-back" data-transition="slide" data-rel="back">
+                <img src="images/back.png" class=""/>   
+            </a>
+            <img class="logo" src="images/logo.png"/>
+        </div>
+        <!--  -->
+        <div data-role="main" class="ui-content">
+            <div class="select">
+                <a href="#detalle-lomo-cerdo-asado" data-transition="slide" class=""></a>
+                <img src="images/thumb1.jpg" class="select-thumb"/>
+                <div class="right-col">
+                    <h2 class="title-list">
+                        lomo de cerdo asado
+                    </h2>
+                    <p class="paragraph-list">
+                        El lomo de cerdo es una carne maravillosa. Trátalo con delicadeza y sigue estos simples pasos y tendrás un lomo jugoso y delicioso para la cena y también para sándwiches para el día siguiente. 
+                    </p>
+                </div>
+            </div>
+            <div class="select">
+                <a href="#detalle-ave-asada" data-transition="slide" class=""></a>
+                <img src="images/thumb2.jpg" class="select-thumb"/>
+                <div class="right-col">
+                    <h2 class="title-list">
+                        Ave asada de la abuela
+                    </h2>
+                    <p class="paragraph-list">
+                        Esta receta pollo asado es sin duda una de las formas más tradicionales de hacer el pollo asado. Si nunca la has preparado, te mostramos como hacer paso a paso de forma fácil.
+                    </p>
+                </div>
+            </div>
+            <div class="select">
+                <a href="#detalle-pavo-clasico" data-transition="slide" class=""></a>
+                <img src="images/thumb3.jpg" class="select-thumb"/>
+                <div class="right-col">
+                    <h2 class="title-list">
+                        Pavo Clásico
+                    </h2>
+                    <p class="paragraph-list">
+                        El pavo es una de los protagonistas principales de las cenas y comidas de Navidad.
+                        En esta receta te enseñamos a preparar un pavo al horno sencillo y sabroso al mismo tiempo, ¡toma nota!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div> 
+    
+    <div data-role="page" id="cat-guarnicion">
+        <div data-role="header" class="header-in">
+            <h1>Guarniciones</h1>
+            <a href="#recetas" class="ui-btn btn-back" data-transition="slide" data-rel="back">
+                <img src="images/back.png" class=""/>   
+            </a>
+            <img class="logo" src="images/logo.png"/>
+        </div>
+    
+        <div data-role="main" class="ui-content">
+            <div class="select">
+                <a href="#detalle-pure-de-papa" data-transition="slide" class=""></a>
+                <img src="images/thumb4.jpg" class="select-thumb"/>
+                <div class="right-col">
+                    <h2 class="title-list">
+                        Puré de papa
+                    </h2>
+                    <p class="paragraph-list">
+                        El puré de papas es una de las formas más populares del mundo de preparar las papas. Esta vez veremos la receta peruana, país de donde es oriundo este tubérculo.
+                    </p>
+                </div>
+            </div>
+            <div class="select">
+                <a href="#detalle-pure-de-camote" data-transition="slide" class=""></a>
+                <img src="images/thumb5.jpg" class="select-thumb"/>
+                <div class="right-col">
+                    <h2 class="title-list">
+                        Puré de camote
+                    </h2>
+                    <p class="paragraph-list">
+                        Prepara un puré de camote para acompañar tus comidas de navidad o año nuevo. Una opción para cambiar el sabor del clásico hecho con papas.
+                    </p>
+                </div>
+            </div>
+            <div class="select">
+                <a href="#detalle-pilaf" data-transition="slide" class=""></a>
+                <img src="images/thumb6.jpg" class="select-thumb"/>
+                <div class="right-col">
+                    <h2 class="title-list">
+                        Pilaf
+                    </h2>
+                    <p class="paragraph-list">
+                        Pilaf o pilaw es una forma de cocinar el arroz típico de la cocina de Medio Oriente, que produce un arroz con granos sueltos y con un sabor especiado. 
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div> 
+    
+    <div data-role="page" id="cat-postre">
+        <div data-role="header" class="header-in">
+            <h1>Postres y bebidas</h1>
+            <a href="#recetas" class="ui-btn btn-back" data-transition="slide" data-rel="back">
+                <img src="images/back.png" class=""/>   
+            </a>
+            <img class="logo" src="images/logo.png"/>
+        </div>
+    
+        <div data-role="main" class="ui-content">
+            <div class="select">
+                <a href="#detalle-peach" data-transition="slide" class=""></a>
+                <img src="images/thumb7.jpg" class="select-thumb"/>
+                <div class="right-col">
+                    <h2 class="title-list">
+                        Peach Melba
+                    </h2>
+                    <p class="paragraph-list">
+                        Receta clásica melba melocotón. Pocos postres de verano logran tener los sabores y colores tan perfectamente deliciosos y tan llamativamente coloridos. 
+                    </p>
+                </div>
+            </div>
+            <div class="select">
+                <a href="#detalle-chocolate" data-transition="slide" class=""></a>
+                <img src="images/thumb8.jpg" class="select-thumb"/>
+                <div class="right-col">
+                    <h2 class="title-list">
+                        Chocolate Caliente
+                    </h2>
+                    <p class="paragraph-list">
+                        A todos nos encanta un buen chocolate caliente, pero después de probar esta receta, se convertirá en tu favorita. Verás que delicioso y fácil de preparar. 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div> 
+    
+    
+    <!-- Detalles -->
+    <!-- Detalles -->
+    <!-- Detalles -->
+    <!-- Detalles -->
+    <div data-role="page" id="detalle-lomo-cerdo-asado">
+        <div data-role="header" class="header-in">
+            <h1>Lomo de cerdo asado</h1>
+            <a href="#cat-platoprincipal" class="ui-btn btn-back" data-transition="slide" data-rel="back">
+                <img src="images/back.png" class="">
+            </a>
+            <img class="logo" src="images/logo.png"/>
+        </div>
+        <!-- Tabs -->
+        <div data-role="tabs" id="tabs">
+          <div data-role="navbar">
+            <ul class="list-tabs">
+              <li class="ui-state-active">
+                  <a href="#one" data-ajax="false" class="ui-btn-active" id="preparacion">Preparación</a>
+              </li>
+              <li>
+                  <a href="#two" data-ajax="false" id="ingredientes">Ingredientes</a>
+              </li>
+            </ul>
+          </div>
+          <!--  -->
+          <div id="one" class="">
+              <div class="category">
+                  catergoría <a href="#cat-platoprincipal" class="sky-blue">Plato principal</a>
+              </div>
+              <div class="image-container">
+                  <img src="images/detail1.jpg"/>
+              </div>
+              <div  class="steps">
+                <ul class="list-steps reset-list">
+                    <li>
+                        <span>1</span>
+                        Colocar en lomo en una tabla y untar los cortes con sal y romero, presionando un poco para introducir la mezcla. 
+                    </li>
+                    <li>
+                        <span>2</span>
+                        Majar (chancar)en el mortero el hinojo, el ajo y el resto de romero picado. Untar el lomo nuevamente con ésta mezcla,
+                        excepto la piel para que no se queme. 
+                    </li>
+                    <li>
+                        <span>3</span>
+                       Colocar el lomo en una fuente para horno y lo marinamos durante media hora con el aceite de oliva, el aceto balsámico y el laurel.
+                    </li>
+                    <li>
+                        <span>4</span>
+                        Precalentar el horno a la máxima potencia y tostar los huesos. Restregar la piel del cerdo con bastante sal marina;
+                        de esta forma se levantará y se secará.
+                    </li>
+                    <li>
+                        <span>5</span>
+                         Colocar el lomo directamente en la rejilla superior del horno.
+                    </li>
+                    <li>
+                        <span>6</span>
+                        Añadir 2 tazas de agua, lo huesos tostados y las verduras al adobo que ha sobrado, e introducir todo al horno, justo debajo del lomo.
+                    </li>
+                    <li>
+                        <span>7</span>
+                        Cocinar por 1 hora, 20 minutos antes bajar la temperatura hasta 220°C. Una vez asado, sacamos el lomo del horno en la misma parrilla.
+                    </li>
+                </ul>
+                <div>Salsa:</div>
+                <ul class="list-steps reset-list">
+                    <li>
+                        <span>1</span>
+                        Colocar Colocar los huesos, el líquido y las verduras en una olla grande. 
+                    </li>
+                    <li>
+                        <span>2</span>
+                        Añadir un poco de agua a la bandeja donde estaban anteriormente y la introducimos de nuevo al horno hasta que hierva. 
+                        Sacar del horno y recoger con una cuchara de madera la grasa que ha podido quedar pegada  y verter este juego a la olla. 
+                        Dar hervor, removiendo de vez en cuando. Espumar
+                    </li>
+                    <li>
+                        <span>3</span>
+                        Descartar las huesos y las verduras. Rectificar la sal.
+                    </li>
+                </ul>
+
+              </div>
+          </div>
+          <div id="two">
+            <div class="container-ingredientes">
+                <div class="top-table">
+                    <div class="right-table">
+                        <div class="many">
+                            cantidades
+                        </div>
+                        <div class="measures">
+                            medidas
+                        </div>
+                        <div class="measure-line">
+                        </div>
+                    </div>
+                </div>
+                <div class="body-table"> 
+                    <ul class="reset-list ingredients-list">
+                        <li class="">
+                            <div class="left-table">
+                                1/2 lomo de cerdo con hueso de
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    3
+                                </div>
+                                <div class="measures">
+                                    kl
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Sal y pimienta
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    c.s
+                                </div>
+                                <div class="measures">
+                                    
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Romero fresco picado
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    1
+                                </div>
+                                <div class="measures">
+                                    cda
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Hinojo fresco picado
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    1
+                                </div>
+                                <div class="measures">
+                                    cda
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Dientes de ajo
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    5
+                                </div>
+                                <div class="measures">
+                                    und
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Vinagre balsámico
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                   8
+                                </div>
+                                <div class="measures">
+                                    cda
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Laurel
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                   4
+                                </div>
+                                <div class="measures">
+                                    hojas
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Aceite de oliva
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                   2
+                                </div>
+                                <div class="measures">
+                                    cdas
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Huesos de cerdo
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                   c.s
+                                </div>
+                                <div class="measures">
+                                    
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Tallos de apio troceados
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                   5
+                                </div>
+                                <div class="measures">
+                                    und
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Zanahoria grande troceada
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                   1
+                                </div>
+                                <div class="measures">
+                                    und
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Cebolla grande toceada
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                   1
+                                </div>
+                                <div class="measures">
+                                    und
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div> 
+    
+    <div data-role="page" id="detalle-ave-asada">
+        <div data-role="header" class="header-in">
+            <h1>El ave de la abuela</h1>
+            <a href="#cat-platoprincipal" class="ui-btn btn-back" data-transition="slide" data-rel="back">
+                <img src="images/back.png" class="">
+            </a>
+            <img class="logo" src="images/logo.png"/>
+        </div>
+        <!-- Tabs -->
+        <div data-role="tabs" id="tabs">
+          <div data-role="navbar">
+            <ul class="list-tabs">
+              <li class="ui-state-active">
+                  <a href="#one2" data-ajax="false" class="ui-btn-active" id="preparacion">Preparación</a>
+              </li>
+              <li>
+                  <a href="#two2" data-ajax="false" id="ingredientes">Ingredientes</a>
+              </li>
+            </ul>
+          </div>
+          <!--  -->
+          <div id="one2" class="">
+              <div class="category">
+                  catergoría <a href="#cat-platoprincipal" class="sky-blue">Plato principal</a>
+              </div>
+              <div class="image-container">
+                  <img src="images/detail2.jpg"/>
+              </div>
+              <div  class="steps">
+                <ul class="list-steps reset-list">
+                    <li>
+                        <span>1</span>
+                        Precalentar el horno a 225°C. 
+                    </li>
+                    <li>
+                        <span>2</span>
+                         Limpiar el pollo y secar con papel de cocina.
+                    </li>
+                    <li>
+                        <span>3</span>
+                       Restregar con sal la parte interna. Tratar de levantar la piel de la pechuga y untamos tambien con sal y colocamos un poco de aceite de oliva
+                       y las hierbas aromaticas. A continuacíon colocar las hierbas aromaticas también por dentro.
+                    </li>
+                    <li>
+                        <span>4</span>
+                        Precalentar Dar 3 cortes rectos en los muslos.
+                    </li>
+                    <li>
+                        <span>5</span>
+                        Sacar la bandeja del horno, echar un chorro de aceite y colocar el pollo con la pechuga hacia arriba.
+                    </li>
+                    <li>
+                        <span>6</span>
+                        Dorar 5 minutos, dar vuelta y dorar 5 minutos mas del otro lado. Volver como al principio y asarlo durante 1 hora a 225°C.
+                    </li>
+                </ul>
+              </div>
+          </div>
+          <div id="two2">
+            <div class="container-ingredientes">
+                <div class="top-table">
+                    <div class="right-table">
+                        <div class="many">
+                            cantidades
+                        </div>
+                        <div class="measures">
+                            medidas
+                        </div>
+                        <div class="measure-line">
+                        </div>
+                    </div>
+                </div>
+                <div class="body-table"> 
+                    <ul class="reset-list ingredients-list">
+                        <li class="">
+                            <div class="left-table">
+                                1 pollo entero
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    1.4
+                                </div>
+                                <div class="measures">
+                                    kg
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Sal y pimienta entera
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    c.s
+                                </div>
+                                <div class="measures">
+                                
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Albahaca
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    1/4
+                                </div>
+                                <div class="measures">
+                                    atado
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Mejorana
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                     1/4
+                                </div>
+                                <div class="measures">
+                                    atado
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Tomillo
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                   1/4
+                                </div>
+                                <div class="measures">
+                                    atado
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Aceite de oliva
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    4
+                                </div>
+                                <div class="measures">
+                                    cda
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Limón cortado por la mitad
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    1
+                                </div>
+                                <div class="measures">
+                                    und
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Laurel
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    4
+                                </div>
+                                <div class="measures">
+                                    hojas
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Romero fresco
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    1/4
+                                </div>
+                                <div class="measures">
+                                    atado
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div> 
+
+    <div data-role="page" id="detalle-pavo-clasico">
+        <div data-role="header" class="header-in">
+            <h1>El pavo clásico navideño</h1>
+            <a href="#cat-platoprincipal" class="ui-btn btn-back" data-transition="slide" data-rel="back">
+                <img src="images/back.png" class="">
+            </a>
+            <img class="logo" src="images/logo.png"/>
+        </div>
+        <!-- Tabs -->
+        <div data-role="tabs" id="tabs">
+          <div data-role="navbar">
+            <ul class="list-tabs">
+              <li class="ui-state-active">
+                  <a href="#one3" data-ajax="false" class="ui-btn-active" id="preparacion">Preparación</a>
+              </li>
+              <li>
+                  <a href="#two3" data-ajax="false" id="ingredientes">Ingredientes</a>
+              </li>
+            </ul>
+          </div>
+          <!--  -->
+          <div id="one3" class="">
+              <div class="category">
+                  catergoría <a href="#cat-platoprincipal" class="sky-blue">Plato principal</a>
+              </div>
+              <div class="image-container">
+                  <img src="images/detail3.jpg"/>
+              </div>
+              <div  class="steps">
+                <ul class="list-steps reset-list">
+                    <li>
+                        <span>1</span>
+                        Descongelar el pavo de manera natural: Bajar del congelador al refrigerador, 
+                        poner en una fuente para que los líquidos que bote no contaminen nuestro refrigerador.
+                    </li>
+                    <li>
+                        <span>2</span>
+                        Secar por completo con la ayuda de un secador o papel absorvente.
+                    </li>
+                    <li>
+                        <span>3</span>
+                       Frotar por todo el cuerpo del ave, tanto por dentro y por fuera con un limón 
+                       (ésto ayudará a que se abran los poros). Luego untar con sal
+                    </li>
+                    <li>
+                        <span>4</span>
+                        En un recipiente mezclar: vino tinto, sal y pimienta, sillao, tomillo y romero.
+                    </li>
+                    <li>
+                        <span>5</span>
+                        Tomar 2 o 3 manzanas delicia (dependiendo de la dimensión del pavo) e introducirla por dentro 
+                        (esto es un secreto para que el pavo no se seque mucho). Amarralo.
+                    </li>
+                    <li>
+                        <span>6</span>
+                         Dejar macerar el pavo por 3 horas (De vez en cuando ir bañando en pavo con la misma preparación.
+                    </li>
+                    <li>
+                        <span>7</span>
+                        Precalentar el horno por 10 minutos a 180°C.
+                    </li>
+                    <li>
+                        <span>8</span>
+                         Colocar trozos de mantequilla pequeños en diferentes zonas del pavo.
+                    </li>
+                    <li>
+                        <span>9</span>
+                        Llevar al horno por 2 1/2 horas. De vez en cuando ir bañando el pavo con los jugos que suelte.
+                        Una recomendación es que puede colocar una fuente con agua debajo de la rejilla del horno 
+                        (donde irá el pavo), esto permitirá
+                        que el horno se mantenga húmedo y nuestro pavo no se reseque.
+                    </li>
+                    <li>
+                        <span>10</span>
+                        Al momento de probar si ya está cocido nuestro pavo, es recomendable hacerlo por la parte de las piernas, ya que la pechuga es la parte que se cocinará mas rápido. Con la ayuda de un palo de brocheta de bambú te puedes ayudar para probar si ya está cocida. Si entra de manera suave, nuestro pavo ya está listo.
+                        Nunca debemos dejar ni una preparación en el horno después de apagarlo, ya que ésta se resecará.
+                    </li>
+                </ul>
+              </div>
+          </div>
+          <div id="two3">
+            <div class="container-ingredientes">
+                <div class="top-table">
+                    <div class="right-table">
+                        <div class="many">
+                            cantidades
+                        </div>
+                        <div class="measures">
+                            medidas
+                        </div>
+                        <div class="measure-line">
+                        </div>
+                    </div>
+                </div>
+                <div class="body-table"> 
+                    <ul class="reset-list ingredients-list">
+                        <li class="">
+                            <div class="left-table">
+                                Pavo (6 kilos)
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    1
+                                </div>
+                                <div class="measures">
+                                    und
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Sal y pimienta entera
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    c.s
+                                </div>
+                                <div class="measures">
+                                   
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Aji colorado molido
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    100
+                                </div>
+                                <div class="measures">
+                                    gr
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                limón
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    2
+                                </div>
+                                <div class="measures">
+                                    und
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Tornillo y romero fresco
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    1/4
+                                </div>
+                                <div class="measures">
+                                    atado
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                manzanas
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    2
+                                </div>
+                                <div class="measures">
+                                    und
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Pablo
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    1
+                                </div>
+                                <div class="measures">
+                                    und
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Mantequilla
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    100
+                                </div>
+                                <div class="measures">
+                                    gr
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Vino tinto
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    c.s
+                                </div>
+                                <div class="measures">
+                                    
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Sillao
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    c.s
+                                </div>
+                                <div class="measures">
+                                    
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div> 
+    
+    <div data-role="page" id="detalle-pure-de-papa">
+        <div data-role="header" class="header-in">
+            <h1>Puré de papa</h1>
+            <a href="#cat-platoprincipal" class="ui-btn btn-back" data-transition="slide" data-rel="back">
+                <img src="images/back.png" class="">
+            </a>
+            <img class="logo" src="images/logo.png"/>
+        </div>
+        <!-- Tabs -->
+        <div data-role="tabs" id="tabs">
+          <div data-role="navbar">
+            <ul class="list-tabs">
+              <li class="ui-state-active">
+                  <a href="#one4" data-ajax="false" class="ui-btn-active" id="preparacion">Preparación</a>
+              </li>
+              <li>
+                  <a href="#two4" data-ajax="false" id="ingredientes">Ingredientes</a>
+              </li>
+            </ul>
+          </div>
+          <!--  -->
+          <div id="one4" class="">
+              <div class="category">
+                  catergoría <a href="#cat-guarnicion" class="sky-blue">Guarniciones</a>
+              </div>
+              <div class="image-container">
+                  <img src="images/detail4.jpg"/>
+              </div>
+              <div  class="steps">
+                <ul class="list-steps reset-list">
+                    <li>
+                        <span>1</span>
+                        Sancochar la papa
+                    </li>
+                    <li>
+                        <span>2</span>
+                        Cortar las finas hierbas
+                    </li>
+                    <li>
+                        <span>3</span>
+                       Prensar la papa
+                    </li>
+                    <li>
+                        <span>4</span>
+                        En una olla agregar la mantequilla, la papa prensada, las finas hierbas.
+                    </li>
+                    <li>
+                        <span>5</span>
+                        Por último agregamos la crema de leche, sal y pimienta
+                    </li>
+                </ul>
+              </div>
+          </div>
+          <div id="two4">
+            <div class="container-ingredientes">
+                <div class="top-table">
+                    <div class="right-table">
+                        <div class="many">
+                            cantidades
+                        </div>
+                        <div class="measures">
+                            medidas
+                        </div>
+                        <div class="measure-line">
+                        </div>
+                    </div>
+                </div>
+                <div class="body-table"> 
+                    <ul class="reset-list ingredients-list">
+                        <li class="">
+                            <div class="left-table">
+                                Papa amarilla
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    1/2
+                                </div>
+                                <div class="measures">
+                                    kl
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Crema de leche
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    100
+                                </div>
+                                <div class="measures">
+                                    ml
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Finas hiervas frescas (tomillo, romero, perejil)
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    c.s
+                                </div>
+                                <div class="measures">
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Mantequilla
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    c.s
+                                </div>
+                                <div class="measures">
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Sal y pimienta
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    c.s
+                                </div>
+                                <div class="measures">
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div> 
+
+    <div data-role="page" id="detalle-pure-de-camote">
+        <div data-role="header" class="header-in">
+            <h1>Puré de Camotes</h1>
+            <a href="#cat-platoprincipal" class="ui-btn btn-back" data-transition="slide" data-rel="back">
+                <img src="images/back.png" class="">
+            </a>
+            <img class="logo" src="images/logo.png"/>
+        </div>
+        <!-- Tabs -->
+        <div data-role="tabs" id="tabs">
+          <div data-role="navbar">
+            <ul class="list-tabs">
+              <li class="ui-state-active">
+                  <a href="#one5" data-ajax="false" class="ui-btn-active" id="preparacion">Preparación</a>
+              </li>
+              <li>
+                  <a href="#two5" data-ajax="false" id="ingredientes">Ingredientes</a>
+              </li>
+            </ul>
+          </div>
+          <!--  -->
+          <div id="one5" class="">
+              <div class="category">
+                  catergoría <a href="#cat-guarnicion" class="sky-blue">Guarniciones</a>
+              </div>
+              <div class="image-container">
+                  <img src="images/detail5.jpg"/>
+              </div>
+              <div  class="steps">
+                <ul class="list-steps reset-list">
+                    <li>
+                        <span>1</span>
+                        Poner a cocinar los camotes en agua hirviendo
+                    </li>
+                    <li>
+                        <span>2</span>
+                        Prensar los camotes. 
+                    </li>
+                    <li>
+                        <span>3</span>
+                       Colocar la mantequilla en una olla, luego el camote, el azúcar, la nuez moscada, canela y el jugo de las naranjas.
+                    </li>
+                    <li>
+                        <span>4</span>
+                        Cocinar y mover hasta que tome la consistencia deseada.
+                    </li>
+                </ul>
+              </div>
+          </div>
+          <div id="two5">
+            <div class="container-ingredientes">
+                <div class="top-table">
+                    <div class="right-table">
+                        <div class="many">
+                            cantidades
+                        </div>
+                        <div class="measures">
+                            medidas
+                        </div>
+                        <div class="measure-line">
+                        </div>
+                    </div>
+                </div>
+                <div class="body-table"> 
+                    <ul class="reset-list ingredients-list">
+                        <li class="">
+                            <div class="left-table">
+                                camote amarillo
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    4
+                                </div>
+                                <div class="measures">
+                                    und
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Azucar rubia
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    1/2
+                                </div>
+                                <div class="measures">
+                                    taza
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Mantequilla
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    2
+                                </div>
+                                <div class="measures">
+                                	cdas
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Nuez moscada
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    1
+                                </div>
+                                <div class="measures">
+                                	pizca
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Canela en polvo
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    1
+                                </div>
+                                <div class="measures">
+                                	cda
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Jugo de 2 naranjas
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    2
+                                </div>
+                                <div class="measures">
+                                	und
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div> 
+
+    <div data-role="page" id="detalle-pilaf">
+        <div data-role="header" class="header-in">
+            <h1>Pilaf</h1>
+            <a href="#cat-platoprincipal" class="ui-btn btn-back" data-transition="slide" data-rel="back">
+                <img src="images/back.png" class="">
+            </a>
+            <img class="logo" src="images/logo.png"/>
+        </div>
+        <!-- Tabs -->
+        <div data-role="tabs" id="tabs">
+          <div data-role="navbar">
+            <ul class="list-tabs">
+              <li class="ui-state-active">
+                  <a href="#one6" data-ajax="false" class="ui-btn-active" id="preparacion">Preparación</a>
+              </li>
+              <li>
+                  <a href="#two6" data-ajax="false" id="ingredientes">Ingredientes</a>
+              </li>
+            </ul>
+          </div>
+          <!--  -->
+          <div id="one6" class="">
+              <div class="category">
+                  catergoría <a href="#cat-guarnicion" class="sky-blue">Guarniciones</a>
+              </div>
+              <div class="image-container">
+                  <img src="images/detail6.jpg"/>
+              </div>
+              <div  class="steps">
+                <ul class="list-steps reset-list">
+                    <li>
+                        <span>1</span>
+                        Derretir 3 cdas de mantequilla y sofreír el arroz, adicionar la paprika y las pasas.
+                    </li>
+                    <li>
+                        <span>2</span>
+                        Incorporar caldo, laurel, clavo y sal. Cocer. 
+                    </li>
+                    <li>
+                        <span>3</span>
+                       En mantequilla restante saltear la cebolla, pimientos en brunoise, adicionar los piñones, almendras.
+                    </li>
+                    <li>
+                        <span>4</span>
+                        Cuando el arroz esté listo retirar el laurel, el clavo y adicionar la mezcla anterior.
+                    </li>
+                    <li>
+                        <span>5</span>
+                        Salpicar con perejil y mover con tenedor
+                    </li>
+                </ul>
+              </div>
+          </div>
+          <div id="two6">
+            <div class="container-ingredientes">
+                <div class="top-table">
+                    <div class="right-table">
+                        <div class="many">
+                            cantidades
+                        </div>
+                        <div class="measures">
+                            medidas
+                        </div>
+                        <div class="measure-line">
+                        </div>
+                    </div>
+                </div>
+                <div class="body-table"> 
+                    <ul class="reset-list ingredients-list">
+                        <li class="">
+                            <div class="left-table">
+                                Arroz
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    1/2
+                                </div>
+                                <div class="measures">
+                                    kg
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Mantequilla
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    6
+                                </div>
+                                <div class="measures">
+                                    cdas
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Piñones
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    2
+                                </div>
+                                <div class="measures">
+                                	cdas
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Pasas rubias
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    100
+                                </div>
+                                <div class="measures">
+                                	gr
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Perejil picado
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    4
+                                </div>
+                                <div class="measures">
+                                	cdas
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Caldo de ave
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    1
+                                </div>
+                                <div class="measures">
+                                	litro
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                cebolla blanca en brunoise
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    1
+                                </div>
+                                <div class="measures">
+                                	und
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Almendras tostadas y picadas en laminas
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    50
+                                </div>
+                                <div class="measures">
+                                	gr
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Paprika
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    2
+                                </div>
+                                <div class="measures">
+                                	cditas
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Pimiento rojo en brunoise
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    1
+                                </div>
+                                <div class="measures">
+                                	und
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Laurel
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    1
+                                </div>
+                                <div class="measures">
+                                	hoja
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Clavo de olor
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    3
+                                </div>
+                                <div class="measures">
+                                	und
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div> 
+
+
+
+
+    <div data-role="page" id="detalle-peach">
+        <div data-role="header" class="header-in">
+            <h1>Peach melba</h1>
+            <a href="#cat-platoprincipal" class="ui-btn btn-back" data-transition="slide" data-rel="back">
+                <img src="images/back.png" class="">
+            </a>
+            <img class="logo" src="images/logo.png"/>
+        </div>
+        <!-- Tabs -->
+        <div data-role="tabs" id="tabs">
+          <div data-role="navbar">
+            <ul class="list-tabs">
+              <li class="ui-state-active">
+                  <a href="#one7" data-ajax="false" class="ui-btn-active" id="preparacion">Preparación</a>
+              </li>
+              <li>
+                  <a href="#two7" data-ajax="false" id="ingredientes">Ingredientes</a>
+              </li>
+            </ul>
+          </div>
+          <!--  -->
+          <div id="one7" class="">
+              <div class="category">
+                  catergoría <a href="#cat-postre" class="sky-blue">postres y bebidas</a>
+              </div>
+              <div class="image-container">
+                  <img src="images/detail7.jpg"/>
+              </div>
+              <div  class="steps">
+                <ul class="list-steps reset-list">
+                    <li>
+                        <span>1</span>
+                        Ponga a hervir agua en una olla. Tenga al lado un recipiente hondo de agua con hielo. Sumerja los duraznos en el agua hirviendo por 20 segundos e inmediatamente pase al agua con hielo. Retire a un plato y pele los duraznos. Si estos están maduros la piel deberá salir fácilmente.
+                    </li>
+                    <li>
+                        <span>2</span>
+                         Corte los duraznos por la mitad y elimine la semilla del centro. Espolvoree con azúcar blanca por todas las superficies de cada durazno y lleve a enfriar a la nevera durante una hora. (opcional, puede cortar los duraznos en cuartos).
+                    </li>
+                    <li>
+                        <span>3</span>
+                       Aparte licúe o procese las frambuesas  junto con el azúcar  hasta formar un puré. Cuele para eliminar las semillas, haciendo presión con una cuchara en el colador para sacar todo el jugo. Lleve a la nevera. Puede agregarle unas gotas de jugo de limón para cortar el dulce del azúcar.
+                    </li>
+                    <li>
+                        <span>4</span>
+                        Sirva en una copa,  ponga primero una bola de helado de vainilla, encima de este los duraznos azucarados y termine con un poco de salsa de frambuesa.
+                    </li>
+                </ul>
+              </div>
+          </div>
+          <div id="two7">
+            <div class="container-ingredientes">
+                <div class="top-table">
+                    <div class="right-table">
+                        <div class="many">
+                            cantidades
+                        </div>
+                        <div class="measures">
+                            medidas
+                        </div>
+                        <div class="measure-line">
+                        </div>
+                    </div>
+                </div>
+                <div class="body-table"> 
+                    <ul class="reset-list ingredients-list">
+                        <li class="">
+                            <div class="left-table">
+                                Duraznos
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    6
+                                </div>
+                                <div class="measures">
+                                    und
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Azucar Blanca
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    c.s
+                                </div>
+                                <div class="measures">
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                            	Helado de vainilla
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    c.s
+                                </div>
+                                <div class="measures">
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                            	Frambuesas frescas
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    1
+                                </div>
+                                <div class="measures">
+                                	taza
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Azúcar impalpable
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    1
+                                </div>
+                                <div class="measures">
+                                	taza
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div> 
+
+
+
+    <div data-role="page" id="detalle-chocolate">
+        <div data-role="header" class="header-in">
+            <h1>Chocolate caliente</h1>
+            <a href="#cat-platoprincipal" class="ui-btn btn-back" data-transition="slide" data-rel="back">
+                <img src="images/back.png" class="">
+            </a>
+            <img class="logo" src="images/logo.png"/>
+        </div>
+        <!-- Tabs -->
+        <div data-role="tabs" id="tabs">
+          <div data-role="navbar">
+            <ul class="list-tabs">
+              <li class="ui-state-active">
+                  <a href="#one8" data-ajax="false" class="ui-btn-active" id="preparacion">Preparación</a>
+              </li>
+              <li>
+                  <a href="#two8" data-ajax="false" id="ingredientes">Ingredientes</a>
+              </li>
+            </ul>
+          </div>
+          <!--  -->
+          <div id="one8" class="">
+              <div class="category">
+                  catergoría <a href="#cat-postre" class="sky-blue">postres y bebidas</a>
+              </div>
+              <div class="image-container">
+                  <img src="images/detail8.jpg"/>
+              </div>
+              <div  class="steps">
+                <ul class="list-steps reset-list">
+                    <li>
+                        <span>1</span>
+                        Poner en una olla agua y el chocolate, canela y clavo, hervir hasta punto de ebullición.
+                    </li>
+                    <li>
+                        <span>2</span>
+                         Agregar la leche, azúcar.
+                    </li>
+                    <li>
+                        <span>3</span>
+                       En un recipiente, diluir la maicena con agua.
+                    </li>
+                    <li>
+                        <span>4</span>
+                        Agregar la maicena de a pocos al chocolate para que espese un poco y agarre consistencia.
+                    </li>
+                    <li>
+                        <span>5</span>
+                        Finalizar con las cucharadas de mantequilla.
+                    </li>
+                    <li>
+                        <span>6</span>
+                        Servir con los mashmellows y ralladuras de chocolate bitter.
+                    </li>
+                </ul>
+              </div>
+          </div>
+          <div id="two8">
+            <div class="container-ingredientes">
+                <div class="top-table">
+                    <div class="right-table">
+                        <div class="many">
+                            cantidades
+                        </div>
+                        <div class="measures">
+                            medidas
+                        </div>
+                        <div class="measure-line">
+                        </div>
+                    </div>
+                </div>
+                <div class="body-table"> 
+                    <ul class="reset-list ingredients-list">
+                        <li class="">
+                            <div class="left-table">
+                                Tableta de chocolate para taza
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    4
+                                </div>
+                                <div class="measures">
+                                    und
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Leche evaporada
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    2
+                                </div>
+                                <div class="measures">
+                                	Tarros
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                            	Mantequilla
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    2
+                                </div>
+                                <div class="measures">
+                                	cdas
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                            	Azuca blanca
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    150
+                                </div>
+                                <div class="measures">
+                                	gr
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Canela y clavo
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    c.s
+                                </div>
+                                <div class="measures">
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Maicena
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    3
+                                </div>
+                                <div class="measures">
+                                	cdas
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                mashmellows pequeños
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    c.s
+                                </div>
+                                <div class="measures">
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="left-table">
+                                Chocolate bitter
+                            </div>
+                            <div class="right-table">
+                                <div class="many">
+                                    1
+                                </div>
+                                <div class="measures">
+                                	tableta
+                                </div>
+                                <div class="measure-line">
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div> 
+</body>
+</html>
