@@ -7,6 +7,12 @@
 <name>Recetas 2015 App</name>
 <description>Aplicacion de Receta</description>
 
+<icon src="images/ic_launcher96x96.png" />
+<icon src="images/ic_launcher48x48.png"   gap:platform="android"    gap:qualifier="ldpi" />
+<icon src="images/ic_launcher48x48.png"   gap:platform="android"    gap:qualifier="mdpi" />
+<icon src="images/ic_launcher72x72.png"   gap:platform="android"    gap:qualifier="hdpi" />
+<icon src="images/ic_launcher96x96.png"  gap:platform="android"    gap:qualifier="xhdpi" />
+
 <access origin="*" subdomains="false"  />
 <gap:platform name="android" />
 <feature name="http://api.phonegap.com/1.0/network"/>
