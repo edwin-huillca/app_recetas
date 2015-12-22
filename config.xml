@@ -4,8 +4,8 @@
     xmlns:android   = "http://schemas.android.com/apk/res/android"
     id              = "com.recetas.app"
     version         = "1.0.0">
-<name>Recetas 2015 App</name>
-<description>Aplicacion de Receta</description>
+<name>Mis Recetas</name>
+<description>Aplicación de recetas Navideñas, plato principal, guarniciones, postres y bebidas.</description>
 
 <icon src="images/ic_launcher96x96.png" />
 <icon src="images/ic_launcher48x48.png"   gap:platform="android"    gap:qualifier="ldpi" />
